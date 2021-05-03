@@ -1,0 +1,59 @@
+---
+
+- hosts: localhost
+  become: true
+  tasks:
+   
+  - name: update repos
+    apt:
+     update_cache: yes
+
+  - name: upgrade packages
+    apt:
+     upgrade: dist
+
+  - name: install snap package manager
+    apt:
+     name: snapd
+     state: latest
+
+  - name: install google repo key
+    apt_key:
+     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+
+  - name: add google repo
+    apt_repository:
+     repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+     filename: google-chrome
+
+  - name: install google chrome
+    apt: 
+     name: google-chrome-stable
+     state: latest
+
+  - name: install zoom client
+    apt:
+     deb: https://zoom.us/client/latest/zoom_amd64.deb
+
+  - name: install vlc media player
+    apt:
+     name: vlc
+     state: latest
+ 
+  - name: install unzip
+    apt:
+     name: unzip
+     state: latest
+
+  - name: install libreoffice
+    apt:
+     name: libreoffice
+     state: latest
+     
+  - name: install slack from snap store
+    snap:
+     name: slack
+
+  - name: install spotify from snap store
+    snap:
+     name: spotify
