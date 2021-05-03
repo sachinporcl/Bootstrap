@@ -88,6 +88,7 @@
      src: loki
      dest: /home/sachinp/.ssh/
      owner: sachinp
+     group: sachinp
      mode: 0400
 
   - name: rename ssh key
@@ -97,6 +98,7 @@
     copy:
      src: config
      dest: /home/sachinp/.ssh/
+     group: sachinp
      owner: sachinp
 
   - name: copy bash profile
@@ -119,7 +121,7 @@
      mode: 0700
 
   - name: install anyconnect
-    command: "cd /home/sachinp/anyconnect-linux64-4.9.04053/vpn/ && sudo ./vpn_install.sh"
+    command: "cd /home/sachinp/anyconnect-linux64-4.9.04053/vpn/ && sudo /home/sachinp/anyconnect-linux64-4.9.04053/vpn//vpn_install.sh"
     
 
     
