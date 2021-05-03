@@ -75,27 +75,27 @@
 
   - name: copy ssh configs 
     copy:
-     src: thor
-     dest: /home/sachinp/.ssh/
-     owner: sachinp
+    - src: thor
+      dest: /home/sachinp/.ssh/
+      owner: sachinp
 
   - name: rename ssh key
     command: "mv /home/sachinp/.ssh/thor /home/sachinp/.ssh/id_rsa.pub"
   
   - name: copy ssh configs 
     copy:
-     src: loki
-     dest: /home/sachinp/.ssh/
-     owner: sachinp
+    - src: loki
+      dest: /home/sachinp/.ssh/
+      owner: sachinp
 
   - name: rename ssh key
     command: "mv /home/sachinp/.ssh/loki /home/sachinp/.ssh/id_rsa"
 
   - name: copy ssh configs 
     copy:
-     src: config
-     dest: /home/sachinp/.ssh/
-     owner: sachinp
+    - src: config
+      dest: /home/sachinp/.ssh/
+      owner: sachinp
 
   - name: copy bash profile
     copy:
@@ -112,12 +112,12 @@
   - name: unzip anyconnect installer
     unarchive:
      src: /home/sachinp/anyconnect-linux64-4.9.04053.zip
-     dest: /home/sachinp/anyconnect
+     dest: /home/sachinp/
      owner: sachinp
-     mode: 0700   
+     mode: 0700
 
   - name: install anyconnect
-    command: "/home/sachinp/anyconnect/vpn/vpn_install.sh"
+    command: "/home/sachinp/anyconnect-linux64-4.9.04053/vpn/vpn_install.sh"
     
 
     
