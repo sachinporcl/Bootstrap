@@ -75,21 +75,27 @@
 
   - name: copy ssh configs 
     copy:
-     - src: thor
-       dest: /home/sachinp/.ssh/id_rsa.pub
-       mode: 400
-       user: sachinp
-       group: sachinp
-     - src: loki
-       dest: /home/sachinp/.ssh/id_rsa
-       mode: 400
-       user: sachinp
-       group: sachinp
-     - src: config
-       dest: /home/sachinp/.ssh/config
-       mode: 400
-       user: sachinp
-       group: sachinp
+    - src: thor
+      dest: /home/sachinp/.ssh/id_rsa.pub
+      mode: 400
+      user: sachinp
+      group: sachinp
+  
+  - name: copy ssh configs 
+    copy:
+    - src: loki
+      dest: /home/sachinp/.ssh/id_rsa
+      mode: 400
+      user: sachinp
+      group: sachinp
+
+  - name: copy ssh configs 
+    copy:
+    - src: config
+      dest: /home/sachinp/.ssh/config
+      mode: 400
+      user: sachinp
+      group: sachinp
 
   - name: copy bash profile
     copy:
