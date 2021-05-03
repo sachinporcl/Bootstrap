@@ -110,10 +110,11 @@
      owner: sachinp
 
   - name: unzip anyconnect installer
-    unzip:
+    unarchive:
      src: /home/sachinp/anyconnect-linux64-4.9.04053.zip
      dest: /home/sachinp/anyconnect
      owner: sachinp
+     mode: 0700   
 
   - name: install anyconnect
     command: "/home/sachinp/anyconnect/vpn/vpn_install.sh"
