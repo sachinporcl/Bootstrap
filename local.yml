@@ -78,6 +78,7 @@
      src: thor
      dest: /home/sachinp/.ssh/
      owner: sachinp
+     mode: 0400
 
   - name: rename ssh key
     command: "mv /home/sachinp/.ssh/thor /home/sachinp/.ssh/id_rsa.pub"
@@ -87,6 +88,7 @@
      src: loki
      dest: /home/sachinp/.ssh/
      owner: sachinp
+     mode: 0400
 
   - name: rename ssh key
     command: "mv /home/sachinp/.ssh/loki /home/sachinp/.ssh/id_rsa"
