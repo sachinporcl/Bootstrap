@@ -4,6 +4,15 @@
   become: true
   tasks:
    
+  - name: install google repo key
+    apt_key:
+     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+
+  - name: add google repo
+    apt_repository:
+     repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+     filename: google-chrome
+
   - name: update repos
     apt:
      update_cache: yes
@@ -16,16 +25,7 @@
     apt:
      name: snapd
      state: latest
-
-  - name: install google repo key
-    apt_key:
-     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
-
-  - name: add google repo
-    apt_repository:
-     repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-     filename: google-chrome
-
+  
   - name: install google chrome
     apt: 
      name: google-chrome-stable
@@ -39,6 +39,10 @@
     apt:
      name: vlc
      state: latest
+  
+  - name: install opensc
+    apt:
+     name: opensc
  
   - name: install unzip
     apt:
@@ -53,52 +57,73 @@
   - name: install slack from snap store
     snap:
      name: slack
+     classic: yes
 
   - name: install spotify from snap store
     snap:
      name: spotify
 
+  - name: install nmap
+    apt:
+     name: nmap
+     state: latest
+
+  - name: install net-tools
+    apt:
+     name: net-tools
+     state: latest
+
   - name: copy ssh configs 
     copy:
-    - src: thor
-      dest: /home/sachinp/.ssh/id_rsa.pub
-      mode: 400
-      user: sachinp
-      group: sachinp
-    - src: loki
-      dest: /home/sachinp/.ssh/id_rsa
-      mode: 400
-      user: sachinp
-      group: sachinp
-    - src: config
-      dest: /home/sachinp/.ssh/config
-      mode: 400
-      user: sachinp
-      group: sachinp
+     src: thor
+     dest: /home/sachinp/.ssh/
+     owner: sachinp
+     group: sachinp
+     mode: 0400
+
+  - name: rename ssh key
+    command: "mv /home/sachinp/.ssh/thor /home/sachinp/.ssh/id_rsa.pub"
+  
+  - name: copy ssh configs 
+    copy:
+     src: loki
+     dest: /home/sachinp/.ssh/
+     owner: sachinp
+     group: sachinp
+     mode: 0400
+
+  - name: rename ssh key
+    command: "mv /home/sachinp/.ssh/loki /home/sachinp/.ssh/id_rsa"
+
+  - name: copy ssh configs 
+    copy:
+     src: config
+     dest: /home/sachinp/.ssh/
+     group: sachinp
+     owner: sachinp
 
   - name: copy bash profile
     copy:
-     src: bashrc
-     dest: /home/sachinp/.bashrc
-     mode: 700
-     user: sachinp
-     group: sachinp
+     src: .bashrc
+     dest: /home/sachinp/
+     owner: sachinp
 
   - name: copy anyconnect installer
     copy:
      src: anyconnect-linux64-4.9.04053.zip
      dest: /home/sachinp/
-     mode: 700
-     user: sachinp
-     group: sachinp
+     owner: sachinp
 
   - name: unzip anyconnect installer
-    unzip:
+    unarchive:
      src: /home/sachinp/anyconnect-linux64-4.9.04053.zip
-     dest: /home/sachinp/anyconnect
-     mode: 700
-     user: sachinp
-     group: sachinp
+     dest: /home/sachinp/
+     owner: sachinp
+     mode: 0700
 
   - name: install anyconnect
-    command: /home/sachinp/anyconnect/vpn/vpn_install.sh
+    command: "sudo /home/sachinp/anyconnect-linux64-4.9.04053/vpn//vpn_install.sh"
+    
+
+    
+     
