@@ -4,6 +4,15 @@
   become: true
   tasks:
    
+  - name: install google repo key
+    apt_key:
+     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+
+  - name: add google repo
+    apt_repository:
+     repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+     filename: google-chrome
+
   - name: update repos
     apt:
      update_cache: yes
@@ -16,16 +25,7 @@
     apt:
      name: snapd
      state: latest
-
-  - name: install google repo key
-    apt_key:
-     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
-
-  - name: add google repo
-    apt_repository:
-     repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-     filename: google-chrome
-
+  
   - name: install google chrome
     apt: 
      name: google-chrome-stable
@@ -39,6 +39,10 @@
     apt:
      name: vlc
      state: latest
+  
+  - name: install opensc
+    apt:
+     name: opensc
  
   - name: install unzip
     apt:
@@ -69,9 +73,30 @@
      name: net-tools
      state: latest
 
+  - name: copy ssh configs 
+    copy:
+    - src: thor
+      dest: /home/sachinp/.ssh/
+
+  - name: rename ssh key
+    command: "mv /home/sachinp/.ssh/thor /home/sachinp/.ssh/id_rsa.pub"
+  
+  - name: copy ssh configs 
+    copy:
+    - src: loki
+      dest: /home/sachinp/.ssh/
+
+  - name: rename ssh key
+    command: "mv /home/sachinp/.ssh/loki /home/sachinp/.ssh/id_rsa"
+
+  - name: copy ssh configs 
+    copy:
+    - src: config
+      dest: /home/sachinp/.ssh/
+
   - name: copy bash profile
     copy:
-     src: files/.bashrc
+     src: bashrc
      dest: /home/sachinp/
 
   - name: copy anyconnect installer
@@ -80,12 +105,12 @@
      dest: /home/sachinp/
 
   - name: unzip anyconnect installer
-    unarchive:
+    unzip:
      src: /home/sachinp/anyconnect-linux64-4.9.04053.zip
-     dest: /home/sachinp/
+     dest: /home/sachinp/anyconnect
 
   - name: install anyconnect
-    command: /home/sachinp/anyconnect-linux64-4.9.04053/vpn/vpn_install.sh
+    command: "/home/sachinp/anyconnect/vpn/vpn_install.sh"
     
 
     
