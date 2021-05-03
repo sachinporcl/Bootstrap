@@ -59,11 +59,6 @@
     snap:
      name: spotify
 
-  - name: install nslookup
-    apt:
-     name: nslookup
-     state: latest
-
   - name: install nmap
     apt:
      name: nmap
