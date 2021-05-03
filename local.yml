@@ -73,25 +73,16 @@
     copy:
      src: files/.bashrc
      dest: /home/sachinp/
-     mode: 0700
-     user: sachinp
-     group: sachinp
 
   - name: copy anyconnect installer
     copy:
      src: anyconnect-linux64-4.9.04053.zip
      dest: /home/sachinp/
-     mode: 0700
-     user: sachinp
-     group: sachinp
 
   - name: unzip anyconnect installer
     unarchive:
      src: /home/sachinp/anyconnect-linux64-4.9.04053.zip
      dest: /home/sachinp/anyconnect
-     mode: 0700
-     user: sachinp
-     group: sachinp
 
   - name: install anyconnect
     command: /home/sachinp/anyconnect/vpn/vpn_install.sh
