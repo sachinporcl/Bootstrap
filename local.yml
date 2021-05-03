@@ -73,7 +73,7 @@
     copy:
      src: files/.bashrc
      dest: /home/sachinp/
-     mode: 700
+     mode: 0700
      user: sachinp
      group: sachinp
 
@@ -81,7 +81,7 @@
     copy:
      src: anyconnect-linux64-4.9.04053.zip
      dest: /home/sachinp/
-     mode: 700
+     mode: 0700
      user: sachinp
      group: sachinp
 
@@ -89,7 +89,7 @@
     unarchive:
      src: /home/sachinp/anyconnect-linux64-4.9.04053.zip
      dest: /home/sachinp/anyconnect
-     mode: 700
+     mode: 0700
      user: sachinp
      group: sachinp
 
