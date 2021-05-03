@@ -53,6 +53,7 @@
   - name: install slack from snap store
     snap:
      name: slack
+     classic: yes
 
   - name: install spotify from snap store
     snap:
