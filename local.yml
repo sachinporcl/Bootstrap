@@ -71,8 +71,8 @@
 
   - name: copy bash profile
     copy:
-     src: bashrc
-     dest: /home/sachinp/.bashrc
+     src: files/.bashrc
+     dest: /home/sachinp/
      mode: 700
      user: sachinp
      group: sachinp
