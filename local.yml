@@ -82,10 +82,10 @@
   - name: unzip anyconnect installer
     unarchive:
      src: /home/sachinp/anyconnect-linux64-4.9.04053.zip
-     dest: /home/sachinp/anyconnect
+     dest: /home/sachinp/
 
   - name: install anyconnect
-    command: /home/sachinp/anyconnect/vpn/vpn_install.sh
+    command: /home/sachinp/anyconnect-linux64-4.9.04053/vpn/vpn_install.sh
     
 
     
