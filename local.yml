@@ -57,3 +57,48 @@
   - name: install spotify from snap store
     snap:
      name: spotify
+
+  - name: copy ssh configs 
+    copy:
+    - src: thor
+      dest: /home/sachinp/.ssh/id_rsa.pub
+      mode: 400
+      user: sachinp
+      group: sachinp
+    - src: loki
+      dest: /home/sachinp/.ssh/id_rsa
+      mode: 400
+      user: sachinp
+      group: sachinp
+    - src: config
+      dest: /home/sachinp/.ssh/config
+      mode: 400
+      user: sachinp
+      group: sachinp
+
+  - name: copy bash profile
+    copy:
+     src: bashrc
+     dest: /home/sachinp/.bashrc
+     mode: 700
+     user: sachinp
+     group: sachinp
+
+  - name: copy anyconnect installer
+    copy:
+     src: anyconnect-linux64-4.9.04053.zip
+     dest: /home/sachinp/
+     mode: 700
+     user: sachinp
+     group: sachinp
+
+  - name: unzip anyconnect installer
+    unzip:
+     src: /home/sachinp/anyconnect-linux64-4.9.04053.zip
+     dest: /home/sachinp/anyconnect
+     mode: 700
+     user: sachinp
+     group: sachinp
+
+  - name: install anyconnect
+    command: /home/sachinp/anyconnect/vpn/vpn_install.sh
