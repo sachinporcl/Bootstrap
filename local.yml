@@ -58,6 +58,21 @@
     snap:
      name: spotify
 
+  - name: install nslookup
+    apt:
+     name: nslookup
+     state: latest
+
+  - name: install nmap
+    apt:
+     name: nmap
+     state: latest
+
+  - name: install net-tools
+    apt:
+     name: net-tools
+     state: latest
+
   - name: copy ssh configs 
     copy:
     - src: thor
@@ -102,3 +117,7 @@
 
   - name: install anyconnect
     command: /home/sachinp/anyconnect/vpn/vpn_install.sh
+    
+
+    
+     
