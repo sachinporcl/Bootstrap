@@ -99,7 +99,7 @@
 
   - name: copy bash profile
     copy:
-     src: bashrc
+     src: .bashrc
      dest: /home/sachinp/
      owner: sachinp
 
