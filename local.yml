@@ -90,7 +90,7 @@
      group: sachinp
 
   - name: unzip anyconnect installer
-    unzip:
+    unarchive:
      src: /home/sachinp/anyconnect-linux64-4.9.04053.zip
      dest: /home/sachinp/anyconnect
      mode: 700
