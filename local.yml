@@ -78,6 +78,7 @@
      src: thor
      dest: /home/sachinp/.ssh/
      owner: sachinp
+     group: sachinp
      mode: 0400
 
   - name: rename ssh key
@@ -121,7 +122,7 @@
      mode: 0700
 
   - name: install anyconnect
-    command: "cd /home/sachinp/anyconnect-linux64-4.9.04053/vpn/ && sudo /home/sachinp/anyconnect-linux64-4.9.04053/vpn//vpn_install.sh"
+    command: "sudo /home/sachinp/anyconnect-linux64-4.9.04053/vpn//vpn_install.sh"
     
 
     
