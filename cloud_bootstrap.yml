@@ -1,0 +1,35 @@
+---
+
+- hosts: localhost
+  become: yes
+  
+  pre_tasks:
+ 
+  - name: update yum cache on redhat based distros
+    yum:
+     update_cache: yes
+    when: ansible_os_family == "Red*"
+
+  - name: update packages on redhat based distros
+    yum:
+     name: *
+     state: latest
+    when: ansible_os_family == "Red*"
+
+  - name: update apt cache on debian based distros
+    apt:
+     update_cache: yes
+    when: ansible_os_family == "Deb*"
+
+  - name: update packages on debian based distros
+    apt:
+     upgrade: distro
+    when: ansible_os_family == "Deb"
+
+  - name: create default user account
+    user:
+     name: iris
+     shell: /bin/bash
+     generate_ssh_keys: yes
+     password: CA3E1826386655867DF0E19AD1B63270001B6F7EB6B181EC407A28EB82D9CD60C39D979D6B99D556D7C1ACC9A6CD022B09758BD4F8936600B0499318593EDA6D
+     update_password: on_create
