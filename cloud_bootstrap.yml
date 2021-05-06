@@ -23,7 +23,7 @@
 
   - name: update packages on debian based distros
     apt:
-     upgrade: distro
+     upgrade: dist
     when: ansible_os_family is match("Deb*")
 
   - name: create default user account
