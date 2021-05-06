@@ -8,23 +8,23 @@
   - name: update yum cache on redhat based distros
     yum:
      update_cache: yes
-    when: ansible_os_family == "Red*"
+    when: ansible_os_family is match("Red*")
 
   - name: update packages on redhat based distros
     yum:
      name: "*"
      state: latest
-    when: ansible_os_family == "Red*"
+    when: ansible_os_family is match("Red*")
 
   - name: update apt cache on debian based distros
     apt:
      update_cache: yes
-    when: ansible_os_family == "Deb*"
+    when: ansible_os_family is match("Deb*")
 
   - name: update packages on debian based distros
     apt:
      upgrade: distro
-    when: ansible_os_family == "Deb"
+    when: ansible_os_family is match("Deb*")
 
   - name: create default user account
     user:
