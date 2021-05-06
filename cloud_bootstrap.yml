@@ -30,6 +30,5 @@
     user:
      name: iris
      shell: /bin/bash
-     generate_ssh_key: yes
      password: CA3E1826386655867DF0E19AD1B63270001B6F7EB6B181EC407A28EB82D9CD60C39D979D6B99D556D7C1ACC9A6CD022B09758BD4F8936600B0499318593EDA6D
      update_password: on_create
