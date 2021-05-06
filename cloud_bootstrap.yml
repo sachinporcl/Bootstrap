@@ -12,7 +12,7 @@
 
   - name: update packages on redhat based distros
     yum:
-     name: *
+     name: "*"
      state: latest
     when: ansible_os_family == "Red*"
 
